@@ -112,13 +112,13 @@ sudo chmod -R 777 ${pre_patch_file_dir}system_ext
 input_android_target_version=$(grep ro.system_ext.build.version.release= ${pre_patch_file_dir}system_ext/etc/build.prop | cut -d'=' -f2)
 rm -rf ${pre_patch_file_dir}system_ext/etc
 
-# 校验 Android 版本，目前仅支持 14 和 15，保留未来扩展空间
+# 校验 Android 版本，目前仅支持 14 、15 和 16，保留未来扩展空间
 case "$input_android_target_version" in
-14 | 15)
+14 | 15 | 16)
   # 支持的版本，继续执行
   ;;
 *)
-  echo "❌ 错误：不支持的 Android 版本：$input_android_target_version，仅支持 14 或 15。" >&2
+  echo "❌ 错误：不支持的 Android 版本：$input_android_target_version，仅支持 14 、 15 或 16。" >&2
   exit 1
   ;;
 esac
